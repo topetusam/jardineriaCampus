@@ -1,2 +1,5 @@
-from modules.getClient import searchName
-searchName()
+import modules.getClient as cliente
+
+print(cliente.search())
+
+
