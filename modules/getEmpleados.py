@@ -16,6 +16,7 @@ def getAllNombreApellidoEmailJefe(codigo):
     return nombreApellidoEmail
 
 def getAllPuestoNombreApellidoEmail(puesto):
+
     nombrePuestoApellidoEmail = []
     for val in em.empleados:
          if(val.get("puesto"))!= "Representante Ventas":
@@ -27,4 +28,22 @@ def getAllPuestoNombreApellidoEmail(puesto):
                    "puesto": val.get("puesto"),
               })
     return nombrePuestoApellidoEmail
-          
+
+#devuelve el nombre, apellidos puesto email, del jefe de la empresa
+def getAllNombreApellidoEmailJefempresa():
+    nombreApellidoEmailJefeEmpresa = []
+    for val in em.empleados:
+        if (val.get("codigo_jefe")) == 3 and (val.get("puesto") == "Director Oficina"):
+            nombreApellidoEmailJefeEmpresa.append(
+                    {
+                        "nombre": val.get("nombre"),
+                        "apellidos": f"{val.get('apellido1')} {val.get('apellido2')}",
+                        "email": val.get("email"),
+                        "jefe": val.get("codigo_jefe"),
+                        "puesto": val.get("puesto")
+                        }
+                ) 
+    return nombreApellidoEmailJefeEmpresa       
+
+
+

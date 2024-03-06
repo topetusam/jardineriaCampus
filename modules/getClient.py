@@ -28,3 +28,19 @@ def getAllClientCreditCiudad(limiteCredit, ciudad):
                 clienteCredic.append(val)
         return clienteCredic
 
+#devuelve un listado con el nombre de todos los clientes españoles
+
+
+def getAllNombreClientesEspañoles():
+     
+     nombreClientesEspañoles = []
+     for val in cli.clientes:
+               if val.get("pais")=="Spain":
+                     nombreClientesEspañoles.append({
+                    "nombre": val.get("nombre_cliente"),
+                    "pais":val.get("pais"),
+                    "ciudad": val.get("ciudad"),
+                    "region": val.get("region")
+               })
+     return nombreClientesEspañoles
+         
