@@ -32,7 +32,7 @@ def getAllCodigoCiudad():
     for val in of.oficina:
         codigoCiudad.append({
             "codigo": val.get("codigo_oficina"),
-            "ciudad": val.get("ciuad")
+            "ciudad": val.get("ciudad")
         })
     
     return codigoCiudad

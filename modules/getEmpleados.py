@@ -15,14 +15,16 @@ def getAllNombreApellidoEmailJefe(codigo):
                 ) 
     return nombreApellidoEmail
 
-def getAllPuestoNombreApellidoEmail():
+def getAllPuestoNombreApellidoEmail(puesto):
     nombrePuestoApellidoEmail = []
     for val in em.empleados:
-         if(val.get("puesto")):
-              nombrePuestoApellidoEmail.appen({
+         if(val.get("puesto"))!= "Representante Ventas":
+              nombrePuestoApellidoEmail.append({
                    
                    "nombre": val.get("nombre"),
                    "apellidos": f"{val.get('apellido1')} {val.get('apellido2')}",
                    "email": val.get("email"),
-                   "jefe": val.get("email"),
+                   "puesto": val.get("puesto"),
               })
+    return nombrePuestoApellidoEmail
+          
