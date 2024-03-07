@@ -10,7 +10,7 @@ import modules.getPedidos as pedido
 
 #print(tabulate(empleado.getAllNombreApellidoEmailJefe(3), tablefmt = 'grid'))
 
-print(tabulate(pago.getAllFechaPago(), tablefmt='grid'))
+print(tabulate(pedido.getAllCodigoEsperadaEntregaPedido(), tablefmt='grid'))
 
 
 
