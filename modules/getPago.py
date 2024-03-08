@@ -28,4 +28,8 @@ def getAllFechaPago():
         })
     return FechaPago
 
-    
+
+#devuelve in listado con todos los pagos que se realizaron en el año 2008 mediante paypal, ordene el resultado de mayor a menor
+
+
+#devuelve un listado con todas las formas de pago que aparecen en la lista pago . Tenga en cuenta  que no deben  aparecer formas de pago repetidas
