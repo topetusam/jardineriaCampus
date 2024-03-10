@@ -1,5 +1,7 @@
 import storage.pedido as pe
 from datetime import datetime
+from tabulate import tabulate
+
 
 def getAllEstadosDePedido():
     EstadoPedido = []
@@ -41,13 +43,36 @@ def getAllCodigoEsperadaEntregaPedido():
 
 #devuelve un listado de todos los pedidos rechazados en 2009
 
+def getAllEstadosDePedido2009():
+    Pedidosrechazados2009 = []
+    for val in pe.pedido:
+        if val.get("fecha_pedido").startswith("2009") and val.get("estado")=="Rechazado":
+            Pedidosrechazados2009.append({
+            "fecha_pedido": val.get("fecha_pedido"),
+            "codigo_pedido": val.get("codigo_pedido"),
+            "estado_pedido":val.get("estado"),
+            "comentario": val.get("comentario")
+
+        })
+        
+    return Pedidosrechazados2009
+
 
 def menu():
     print("""
           
-          1. Obtener todos los clientes (nombre)
-          2. Obtener un cliente por el codigo
-          3. Obtener toda la informacion del cliente segun su limite de credito y ciudad que pertenece
+
+    _______ ____                ____           ___     __          
+   / ____(_) / /__________     / __ \___  ____/ (_)___/ /___  _____
+  / /_  / / / __/ ___/ __ \   / /_/ / _ \/ __  / / __  / __ \/ ___/
+ / __/ / / / /_/ /  / /_/ /  / ____/  __/ /_/ / / /_/ / /_/ (__  ) 
+/_/   /_/_/\__/_/   \____/  /_/    \___/\__,_/_/\__,_/\____/____/  
+                                                                   
+
+          
+          1. Obtener el estado del pedido
+          2. Obtener un listado del cliente con los pedidos que no han sido enrtregados a tiempo
+          3. Obtener un listado con todos los pedidos rechazados en 2009
           4. Obtener clientes por pais, region y ciudad
           5. Obtener cliente por pais
           
@@ -56,13 +81,11 @@ def menu():
     
     
     if(opcion==1):
-        print(tabulate(searchAllClientesName(), headers="keys", tablefmt = 'rounded_grid'))
+        print(tabulate(getAllEstadosDePedido(), headers="keys", tablefmt = 'rounded_grid'))
     
     elif(opcion==2):
-        codigoCliente= int(input("Ingrese el codigo del cliente: "))
-        print(tabulate(getoneClientecodigo(codigoCliente), headers="keys", tablefmt = 'rounded_grid'))    
+        print(tabulate(getAllCodigoEsperadaEntregaPedido(), headers="keys", tablefmt = 'rounded_grid'))    
     
     elif(opcion == 3):
-        limiteCredit = int(input("Ingrese el limite de credito de los clientes que deseas visualizar: "))
-        ciudad = input("ingrese la ciudad que desea filtrar los clientes: ")
-        print(tabulate(getAllClientCreditCiudad(limiteCredit, ciudad), headers="keys", tablefmt='rounded_grid'))
+        
+        print(tabulate(getAllEstadosDePedido2009(), headers="keys", tablefmt='rounded_grid'))

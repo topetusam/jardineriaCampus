@@ -51,6 +51,14 @@ def getAllNombreApellidoEmailJefempresa():
 def menu():
     print("""
           
+
+    _______ ____                ______                __               __          
+   / ____(_) / /__________     / ____/___ ___  ____  / /__  ____ _____/ /___  _____
+  / /_  / / / __/ ___/ __ \   / __/ / __ `__ \/ __ \/ / _ \/ __ `/ __  / __ \/ ___/
+ / __/ / / / /_/ /  / /_/ /  / /___/ / / / / / /_/ / /  __/ /_/ / /_/ / /_/ (__  ) 
+/_/   /_/_/\__/_/   \____/  /_____/_/ /_/ /_/ .___/_/\___/\__,_/\__,_/\____/____/  
+                                           /_/                                     
+
           
           1. Obtener Nombre apeelido y email cuyo codigo de jefe es siete
           2. Obtener el listado de todos los jefes
