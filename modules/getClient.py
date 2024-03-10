@@ -84,6 +84,14 @@ def getAllNombreClientesEspañoles():
 def menu():
     print("""
           
+                                              
+   __________ _________  ____    _______   _________  ________________
+  / __/  _/ //_  __/ _ \/ __ \  / ___/ /  /  _/ __/ |/ /_  __/ __/ __/
+ / _/_/ // /__/ / / , _/ /_/ / / /__/ /___/ // _//    / / / / _/_\ \  
+/_/ /___/____/_/ /_/|_|\____/  \___/____/___/___/_/|_/ /_/ /___/___/  
+                                                                      
+
+
           1. Obtener todos los clientes (nombre)
           2. Obtener un cliente por el codigo
           3. Obtener toda la informacion del cliente segun su limite de credito y ciudad que pertenece
@@ -92,7 +100,7 @@ def menu():
           6. Lista los nombres de los clientes españoles
           
           """)
-    opcion=int(input("Elija una de las opciones: "))
+    opcion=int(input("\n Elija una de las opciones: "))
     
     
     if(opcion==1):
