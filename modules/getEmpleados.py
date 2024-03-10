@@ -1,10 +1,12 @@
 import storage.empleado as em
+from tabulate import tabulate
+
 
 #listado con conbre apeelido y email cuyo codigo de jefe es siete
-def getAllNombreApellidoEmailJefe(codigo):
+def getAllNombreApellidoEmailJefe():
     nombreApellidoEmail = []
     for val in em.empleados:
-        if(val.get("codigo_jefe")==codigo):
+        if(val.get("codigo_jefe")==7):
                 nombreApellidoEmail.append(
                 {
                     "nombre": val.get("nombre"),
@@ -15,7 +17,8 @@ def getAllNombreApellidoEmailJefe(codigo):
                 ) 
     return nombreApellidoEmail
 
-def getAllPuestoNombreApellidoEmail(puesto):
+#devuelve el listado de todos los jefes
+def getAllPuestoNombreApellidoEmail():
 
     nombrePuestoApellidoEmail = []
     for val in em.empleados:
@@ -49,25 +52,21 @@ def menu():
     print("""
           
           
-          1. Obtener todos los clientes (nombre)
-          2. Obtener un cliente por el codigo
-          3. Obtener toda la informacion del cliente segun su limite de credito y ciudad que pertenece
-          4. Obtener clientes por pais, region y ciudad
-          5. Obtener cliente por pais
+          1. Obtener Nombre apeelido y email cuyo codigo de jefe es siete
+          2. Obtener el listado de todos los jefes
+          3. Obtener el listado del Director de oficina
+
           
           """)
     opcion=int(input("Elija una de las opciones: "))
     
     
     if(opcion==1):
-        print(tabulate(searchAllClientesName(), headers="keys", tablefmt = 'rounded_grid'))
+        print(tabulate(getAllNombreApellidoEmailJefe(), headers="keys", tablefmt = 'rounded_grid'))
     
     elif(opcion==2):
-        codigoCliente= int(input("Ingrese el codigo del cliente: "))
-        print(tabulate(getoneClientecodigo(codigoCliente), headers="keys", tablefmt = 'rounded_grid'))    
+        print(tabulate(getAllPuestoNombreApellidoEmail(), headers="keys", tablefmt = 'rounded_grid'))    
     
     elif(opcion == 3):
-        limiteCredit = int(input("Ingrese el limite de credito de los clientes que deseas visualizar: "))
-        ciudad = input("ingrese la ciudad que desea filtrar los clientes: ")
-        print(tabulate(getAllClientCreditCiudad(limiteCredit, ciudad), headers="keys", tablefmt='rounded_grid'))
+        print(tabulate(getAllNombreApellidoEmailJefempresa(), headers="keys", tablefmt='rounded_grid'))
 

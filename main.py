@@ -24,8 +24,8 @@ if (__name__=='__main__'):
           1. Cliente
           2. Oficina
           3. Empleados
-          4. Pedidos
-          5. Pagos 
+          4. Pago
+          5. Pedidos 
           
           """)
     opcion = int(input("\n Seleccione unas de las opciones: "))
