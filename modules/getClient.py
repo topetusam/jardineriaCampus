@@ -82,7 +82,8 @@ def getAllNombreClientesEspañoles():
 
 
 def menu():
-    print("""
+    while True:
+          print("""
           
 
                     
@@ -93,7 +94,7 @@ def menu():
 /_/   /_/_/\__/_/   \____/   \____/_/_/\___/_/ /_/\__/\___/ 
                                                             
 
-
+          0. Regresar  
           1. Obtener todos los clientes (nombre)
           2. Obtener un cliente por el codigo
           3. Obtener toda la informacion del cliente segun su limite de credito y ciudad que pertenece
@@ -102,30 +103,36 @@ def menu():
           6. Lista los nombres de los clientes españoles
           
           """)
-    opcion=int(input("\n Elija una de las opciones: "))
-    
-    
-    if(opcion==1):
-        print(tabulate(searchAllClientesName(), headers="keys", tablefmt = 'rounded_grid'))
-    
-    elif(opcion==2):
-        codigoCliente= int(input("Ingrese el codigo del cliente: "))
-        print(tabulate(getoneClientecodigo(codigoCliente), headers="keys", tablefmt = 'rounded_grid'))    
-    
-    elif(opcion == 3):
-        limiteCredit = int(input("Ingrese el limite de credito de los clientes que deseas visualizar: "))
-        ciudad = input("ingrese la ciudad que desea filtrar los clientes: ")
-        print(tabulate(getAllClientCreditCiudad(limiteCredit, ciudad), headers="keys", tablefmt='rounded_grid'))
-     
-    elif(opcion ==4):
-        pais =  input("Ingrese el pais que desea flitrar: ")
-        ciudad = input("ingrese la ciudad que desea filtrar los clientes: ")
-        region = input("Ingrese la region que desea filtrar")
-        print(tabulate(getAllPaisRegionCiudad(pais, region, ciudad), headers="keys", tablefmt='rounded_grid'))
+          opcion=int(input("\n Elija una de las opciones: "))
+          if(opcion==1):
+                print(tabulate(searchAllClientesName(), headers="keys", tablefmt = 'rounded_grid'))
+          elif(opcion==2):
+                codigoCliente= int(input("Ingrese el codigo del cliente: "))
+                print(tabulate(getoneClientecodigo(codigoCliente), headers="keys", tablefmt = 'rounded_grid'))    
+          elif(opcion == 3):
+                limiteCredit = int(input("Ingrese el limite de credito de los clientes que deseas visualizar: "))
+                ciudad = input("ingrese la ciudad que desea filtrar los clientes: ")
+                print(tabulate(getAllClientCreditCiudad(limiteCredit, ciudad), headers="keys", tablefmt='rounded_grid'))
+            
+          elif(opcion ==4):
+                pais =  input("Ingrese el pais que desea flitrar: ")
+                ciudad = input("ingrese la ciudad que desea filtrar los clientes: ")
+                region = input("Ingrese la region que desea filtrar")
+                print(tabulate(getAllPaisRegionCiudad(pais, region, ciudad), headers="keys", tablefmt='rounded_grid'))
 
-    elif(opcion==5):
-        pais = input("Ingrese el pais que desea flitrar: ")
-        print(tabulate(getAllClientePais(pais), headers="keys", tablefmt='rounded_grid'))
-        
-    elif(opcion==6):
-        print(tabulate(getAllNombreClientesEspañoles(), headers="keys", tablefmt='rounded_grid'))
+          elif(opcion==5):
+                pais = input("Ingrese el pais que desea flitrar: ")
+                print(tabulate(getAllClientePais(pais), headers="keys", tablefmt='rounded_grid'))
+                
+          elif(opcion==6):
+                print(tabulate(getAllNombreClientesEspañoles(), headers="keys", tablefmt='rounded_grid'))
+          elif(opcion==0):
+               break    
+           
+         
+
+            
+           
+         
+         
+   

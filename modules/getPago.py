@@ -63,40 +63,43 @@ def getAllFormasdepagoSinRepetir():
         })
     return FormasDePago
 def menu():
-    print("""
-          
-                                              
+    while True:
+        print("""
+            
+                                                
 
-    _______ ____                ____                  
-   / ____(_) / /__________     / __ \____ _____ _____ 
-  / /_  / / / __/ ___/ __ \   / /_/ / __ `/ __ `/ __ \
- / __/ / / / /_/ /  / /_/ /  / ____/ /_/ / /_/ / /_/ /
-/_/   /_/_/\__/_/   \____/  /_/    \__,_/\__, /\____/ 
-                                        /____/        
+        _______ ____                ____                  
+    / ____(_) / /__________     / __ \____ _____ _____ 
+    / /_  / / / __/ ___/ __ \   / /_/ / __ `/ __ `/ __ \
+    / __/ / / / /_/ /  / /_/ /  / ____/ /_/ / /_/ / /_/ /
+    /_/   /_/_/\__/_/   \____/  /_/    \__,_/\__, /\____/ 
+                                            /____/        
 
 
-
-          1. Obtener los pagos realizados por PayPal
-          2. Obtener los pagos realizados en el año 2008
-          3. Obtener los pagos que se realizaron en 2008 mediante Paypal
-          4. Obtener las formas de pago sin repetir
+            0. Regresar
+            1. Obtener los pagos realizados por PayPal
+            2. Obtener los pagos realizados en el año 2008
+            3. Obtener los pagos que se realizaron en 2008 mediante Paypal
+            4. Obtener las formas de pago sin repetir
+            
+            
+            """)
+        opcion=int(input("\n Elija una de las opciones: "))
         
-          
-          """)
-    opcion=int(input("\n Elija una de las opciones: "))
-    
-    
-    if(opcion==1):
-        print(tabulate(getAllFormapagoTotal(), headers="keys", tablefmt = 'rounded_grid'))
-    
-    elif(opcion==2):
         
-        print(tabulate(getAllFechaPago(), headers="keys", tablefmt = 'rounded_grid'))    
-    
-    elif(opcion == 3):
-       
-        print(tabulate(getAllFechaPagoPyapal(), headers="keys", tablefmt='rounded_grid'))
-     
-    elif(opcion ==4):
+        if(opcion==1):
+            print(tabulate(getAllFormapagoTotal(), headers="keys", tablefmt = 'rounded_grid'))
         
-        print(tabulate(getAllFormasdepagoSinRepetir(), headers="keys", tablefmt='rounded_grid'))
+        elif(opcion==2):
+            
+            print(tabulate(getAllFechaPago(), headers="keys", tablefmt = 'rounded_grid'))    
+        
+        elif(opcion == 3):
+        
+            print(tabulate(getAllFechaPagoPyapal(), headers="keys", tablefmt='rounded_grid'))
+        
+        elif(opcion ==4):
+            
+            print(tabulate(getAllFormasdepagoSinRepetir(), headers="keys", tablefmt='rounded_grid'))
+        elif(opcion==0):
+             break    

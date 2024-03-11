@@ -14,7 +14,8 @@ import modules.getPedidos as pedido
 
 
 if (__name__=='__main__'):
-    print("""
+    while True:
+            print("""
 
        
     __  ___                    ____       _            _             __
@@ -24,7 +25,7 @@ if (__name__=='__main__'):
 /_/  /_/\___/_/ /_/\__,_/  /_/   /_/  /_/_/ /_/\___/_/ .___/\__,_/_/   
                                                     /_/                
    
-
+          0. Salir
           1. Cliente
           2. Oficina
           3. Empleados
@@ -32,15 +33,18 @@ if (__name__=='__main__'):
           5. Pedidos 
           
           """)
-    opcion = int(input("\n Seleccione unas de las opciones: "))
-    if(opcion==1):
-        cliente.menu()
-    elif(opcion==2):
-        oficina.menu()
-    elif(opcion==3):
-        empleado.menu()
-    elif(opcion==4):
-        pago.menu()
-    elif(opcion==5):
-        pedido.menu()            
+            opcion = int(input("\n Seleccione unas de las opciones: "))
+            if(opcion==1):
+                cliente.menu()
+            elif(opcion==2):
+                oficina.menu()
+            elif(opcion==3):
+                empleado.menu()
+            elif(opcion==4):
+                pago.menu()
+            elif(opcion==5):
+                pedido.menu() 
+            elif(opcion==0):
+                break           
+    
         

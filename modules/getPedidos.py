@@ -59,33 +59,36 @@ def getAllEstadosDePedido2009():
 
 
 def menu():
-    print("""
-          
+    while True:
+        print("""
+            
 
-    _______ ____                ____           ___     __          
-   / ____(_) / /__________     / __ \___  ____/ (_)___/ /___  _____
-  / /_  / / / __/ ___/ __ \   / /_/ / _ \/ __  / / __  / __ \/ ___/
- / __/ / / / /_/ /  / /_/ /  / ____/  __/ /_/ / / /_/ / /_/ (__  ) 
-/_/   /_/_/\__/_/   \____/  /_/    \___/\__,_/_/\__,_/\____/____/  
-                                                                   
+        _______ ____                ____           ___     __          
+    / ____(_) / /__________     / __ \___  ____/ (_)___/ /___  _____
+    / /_  / / / __/ ___/ __ \   / /_/ / _ \/ __  / / __  / __ \/ ___/
+    / __/ / / / /_/ /  / /_/ /  / ____/  __/ /_/ / / /_/ / /_/ (__  ) 
+    /_/   /_/_/\__/_/   \____/  /_/    \___/\__,_/_/\__,_/\____/____/  
+                                                                    
 
-          
-          1. Obtener el estado del pedido
-          2. Obtener un listado del cliente con los pedidos que no han sido enrtregados a tiempo
-          3. Obtener un listado con todos los pedidos rechazados en 2009
-          4. Obtener clientes por pais, region y ciudad
-          5. Obtener cliente por pais
-          
-          """)
-    opcion=int(input("Elija una de las opciones: "))
-    
-    
-    if(opcion==1):
-        print(tabulate(getAllEstadosDePedido(), headers="keys", tablefmt = 'rounded_grid'))
-    
-    elif(opcion==2):
-        print(tabulate(getAllCodigoEsperadaEntregaPedido(), headers="keys", tablefmt = 'rounded_grid'))    
-    
-    elif(opcion == 3):
+            0. Regresar
+            1. Obtener el estado del pedido
+            2. Obtener un listado del cliente con los pedidos que no han sido enrtregados a tiempo
+            3. Obtener un listado con todos los pedidos rechazados en 2009
+            4. Obtener clientes por pais, region y ciudad
+            5. Obtener cliente por pais
+            
+            """)
+        opcion=int(input("Elija una de las opciones: "))
         
-        print(tabulate(getAllEstadosDePedido2009(), headers="keys", tablefmt='rounded_grid'))
+        
+        if(opcion==1):
+            print(tabulate(getAllEstadosDePedido(), headers="keys", tablefmt = 'rounded_grid'))
+        
+        elif(opcion==2):
+            print(tabulate(getAllCodigoEsperadaEntregaPedido(), headers="keys", tablefmt = 'rounded_grid'))    
+        
+        elif(opcion == 3):
+            
+            print(tabulate(getAllEstadosDePedido2009(), headers="keys", tablefmt='rounded_grid'))
+        elif(opcion==0):
+            break

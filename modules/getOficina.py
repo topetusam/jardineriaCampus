@@ -38,30 +38,33 @@ def getAllBuscarCodigoPostal(codigo_postal):
     return codigoPostal
 
 def menu():
-    print("""
-          
+    while True:
+        print("""
+            
 
-    _______ ____                ____  _____      _            
-   / ____(_) / /__________     / __ \/ __(_)____(_)___  ____ _
-  / /_  / / / __/ ___/ __ \   / / / / /_/ / ___/ / __ \/ __ `/
- / __/ / / / /_/ /  / /_/ /  / /_/ / __/ / /__/ / / / / /_/ / 
-/_/   /_/_/\__/_/   \____/   \____/_/ /_/\___/_/_/ /_/\__,_/  
-                                                              
-
-          1. Obtener la ciudad y el codigo de la oficina
-          2. Obtener un listado con la ciudad y el telfono de las oficinas de españa
-          3. Obtener la informacion de las oficinas por su codigo postal
-          
-          """)
-    opcion=int(input("Elija una de las opciones: "))
-    
-    
-    if(opcion==1):
-        print(tabulate(getAllCodigoCiudad(), headers="keys", tablefmt = 'rounded_grid'))
-    
-    elif(opcion==2):
-        print(tabulate(getAllCiudadTelefono(), headers="keys", tablefmt = 'rounded_grid'))    
-    
-    elif(opcion == 3):
-        Codigop = input("ingrese el codigo postal para acceder a los datos: ")
-        print(tabulate(getAllBuscarCodigoPostal(Codigop), headers="keys", tablefmt='rounded_grid'))
+        _______ ____                ____  _____      _            
+    / ____(_) / /__________     / __ \/ __(_)____(_)___  ____ _
+    / /_  / / / __/ ___/ __ \   / / / / /_/ / ___/ / __ \/ __ `/
+    / __/ / / / /_/ /  / /_/ /  / /_/ / __/ / /__/ / / / / /_/ / 
+    /_/   /_/_/\__/_/   \____/   \____/_/ /_/\___/_/_/ /_/\__,_/  
+                                                                
+            0. Regresar
+            1. Obtener la ciudad y el codigo de la oficina
+            2. Obtener un listado con la ciudad y el telfono de las oficinas de españa
+            3. Obtener la informacion de las oficinas por su codigo postal
+            
+            """)
+        opcion=int(input("Elija una de las opciones: "))
+        
+        
+        if(opcion==1):
+            print(tabulate(getAllCodigoCiudad(), headers="keys", tablefmt = 'rounded_grid'))
+        
+        elif(opcion==2):
+            print(tabulate(getAllCiudadTelefono(), headers="keys", tablefmt = 'rounded_grid'))    
+        
+        elif(opcion == 3):
+            Codigop = input("ingrese el codigo postal para acceder a los datos: ")
+            print(tabulate(getAllBuscarCodigoPostal(Codigop), headers="keys", tablefmt='rounded_grid'))
+        elif(opcion==0):
+            break
