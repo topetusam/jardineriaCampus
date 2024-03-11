@@ -5,12 +5,13 @@ import modules.getOficina as oficina
 import modules.getEmpleados as empleado
 import modules.getPago as pago
 import modules.getPedidos as pedido
+import modules.getProducto as producto
 
 
 
 #print(tabulate(empleado.getAllNombreApellidoEmailJefe(3), tablefmt = 'grid'))
 
-# print(tabulate(cliente.getAllClientePais("United Kingdom"), tablefmt='grid'))
+print(tabulate(producto.getAllProcuctoPrecio(), tablefmt='grid'))
 
 
 if (__name__=='__main__'):
