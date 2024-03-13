@@ -80,6 +80,34 @@ def getAllNombreClientesEspañoles():
                })
      return nombreClientesEspañoles
 
+#devuelve un listado con los clientes de la ciudad de madrid, y cuyo representante de ventas tenga el codigo 11 o 30
+
+def clientesCiudadMadrid():
+      clienteCiudadMadrid= []
+      elijecodigo=int(input("Escoge 30 o 11 para mostrar los resultados"))
+      for val in cli.clientes:
+            if val.get("region")=="Madrid":
+                 if elijecodigo==11 and val.get("codigo_empleado_rep_ventas")==11:
+                        clienteCiudadMadrid.append({ 
+                            "nombre": val.get("nombre_cliente"),
+                            "pais":val.get("pais"),
+                            "ciudad": val.get("ciudad"),
+                            "region": val.get("region"),
+                            "codigo": val.get("codigo_empleado_rep_ventas")
+                        })
+                 elif elijecodigo==30 and val.get("codigo_empleado_rep_ventas")==30:
+                        clienteCiudadMadrid.append({
+                    "nombre": val.get("nombre_cliente"),
+                    "pais":val.get("pais"),
+                    "ciudad": val.get("ciudad"),
+                    "region": val.get("region"),
+                    "codigo": val.get("codigo_empleado_rep_ventas")
+
+                  })
+
+            
+      return clienteCiudadMadrid     
+
 
 def menu():
     while True:
@@ -101,6 +129,7 @@ def menu():
           4. Obtener clientes por pais, region y ciudad
           5. Obtener cliente por pais
           6. Lista los nombres de los clientes españoles
+          7. Clientes de la ciudad de madrid que tengan codigo de rep de ventas 11 o 30      
           
           """)
           opcion=int(input("\n Elija una de las opciones: "))
@@ -126,6 +155,10 @@ def menu():
                 
           elif(opcion==6):
                 print(tabulate(getAllNombreClientesEspañoles(), headers="keys", tablefmt='rounded_grid'))
+          
+          elif(opcion==7):
+           print(tabulate(clientesCiudadMadrid(), headers="keys", tablefmt='rounded_grid'))
+          
           elif(opcion==0):
                break    
            

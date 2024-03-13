@@ -10,8 +10,7 @@ import modules.getProducto as producto
 
 
 #print(tabulate(empleado.getAllNombreApellidoEmailJefe(3), tablefmt = 'grid'))
-
-print(tabulate(producto.getAllProcuctoPrecio(), tablefmt='grid'))
+# print(tabulate(cliente.clientesCiudadMadrid(), tablefmt='grid'))
 
 
 if (__name__=='__main__'):
@@ -32,6 +31,7 @@ if (__name__=='__main__'):
           3. Empleados
           4. Pago
           5. Pedidos 
+          6. producto
           
           """)
             opcion = int(input("\n Seleccione unas de las opciones: "))
@@ -44,8 +44,9 @@ if (__name__=='__main__'):
             elif(opcion==4):
                 pago.menu()
             elif(opcion==5):
-                pedido.menu() 
+                pedido.menu()
+            elif(opcion==6):
+                producto.menu()  
             elif(opcion==0):
                 break           
     
-        

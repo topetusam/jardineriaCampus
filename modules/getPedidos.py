@@ -47,6 +47,7 @@ def getAllEstadosDePedido2009():
     Pedidosrechazados2009 = []
     for val in pe.pedido:
         if val.get("fecha_pedido").startswith("2009") and val.get("estado")=="Rechazado":
+
             Pedidosrechazados2009.append({
             "fecha_pedido": val.get("fecha_pedido"),
             "codigo_pedido": val.get("codigo_pedido"),
@@ -54,9 +55,49 @@ def getAllEstadosDePedido2009():
             "comentario": val.get("comentario")
 
         })
-        
+    # Pedidosrechazados2009.sort(datetime.strptime("fecha_pedido", "%d/%m/%Y"), reverse = True)
+    Pedidosrechazados2009.sort(key=lambda x: datetime.strptime(x["fecha_pedido"], "%Y-%m-%d"), reverse=True) 
     return Pedidosrechazados2009
 
+#devuelve un listado con el codigo de pedido, codigo cliente, fecha esperada, y fecha de entrega de los pedidos cuya feha de entrega ha sido al menos dos dias antes de la fecha esperada
+def getAllpedidosDosDiasFechaEsperada():
+    pedidosDosDiasFecha= []
+    for val in pe.pedido:
+        if val.get("estado") == "Entregado" and val.get("fecha_entrega") is None:
+            val["fecha_entrega"] = val.get("fecha_esperada")
+        if val.get("estado") == "Entregado":
+            date_1 = "/".join(val.get("fecha_esperada").split("-")[::-1])
+            date_2 = "/".join(val.get("fecha_entrega").split("-")[::-1])
+            start= datetime.strptime(date_2, "%d/%m/%Y")
+            end = datetime.strptime(date_1, "%d/%m/%Y")
+            diff1 = end.date() - start.date()              
+            if(diff1.days >= 2):
+                pedidosDosDiasFecha.append({
+                "codigo_pedido": val.get("codigo_pedido"),
+                "estado_pedido":val.get("estado"),
+                "fecha_entrega":val.get("fecha_entrega"),
+                "comentario": val.get("comentario")
+
+                                        })
+        
+    return pedidosDosDiasFecha
+
+#devuelve un pedido de todos los pedidos que han sido entregados en cualquier ano en enero
+
+def PedidosEntregadosEnero():
+    PedidosEnero= []
+    for val in pe.pedido:
+        if val.get("estado")=="Entregado" and val.get("fecha_entrega") is not None:
+            fecha_entrega = datetime.strptime(val.get("fecha_entrega"), "%Y-%m-%d")
+            if fecha_entrega.month == 1:
+                PedidosEnero.append({
+            "codigo_pedido": val.get("codigo_pedido"),
+            "estado_pedido":val.get("estado"),
+            "fecha_entrega":val.get("fecha_entrega"),
+            "comentario": val.get("comentario")
+
+        })
+    return PedidosEnero
 
 def menu():
     while True:
@@ -74,8 +115,8 @@ def menu():
             1. Obtener el estado del pedido
             2. Obtener un listado del cliente con los pedidos que no han sido enrtregados a tiempo
             3. Obtener un listado con todos los pedidos rechazados en 2009
-            4. Obtener clientes por pais, region y ciudad
-            5. Obtener cliente por pais
+            4. Pedidos entregados al menos dos dias antes de lo esperado
+            5. Pedidos entregados en Enero
             
             """)
         opcion=int(input("Elija una de las opciones: "))
@@ -88,7 +129,13 @@ def menu():
             print(tabulate(getAllCodigoEsperadaEntregaPedido(), headers="keys", tablefmt = 'rounded_grid'))    
         
         elif(opcion == 3):
-            
             print(tabulate(getAllEstadosDePedido2009(), headers="keys", tablefmt='rounded_grid'))
+
+        elif(opcion == 4):
+            print(tabulate(getAllpedidosDosDiasFechaEsperada(), headers="keys", tablefmt='rounded_grid'))    
+       
+        elif(opcion==5):
+            print(tabulate(PedidosEntregadosEnero(), headers="keys", tablefmt='rounded_grid'))
+        
         elif(opcion==0):
             break
