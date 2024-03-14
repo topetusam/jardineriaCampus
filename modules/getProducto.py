@@ -1,11 +1,18 @@
-import storage.producto as pro
 from tabulate import tabulate
+import requests
+import os
 
+
+def getAllData():
+    #json-server storage/producto -b 5501 
+    peticion= requests.get("http://172.16.106.88:5501")
+    data= peticion.json()
+    return data
 #muestra una lista con los productos disponibles y su precio
 
 def getAllProcuctoPrecio():
     PrecioProducto = []
-    for val in pro.producto:
+    for val in getAllData():
         PrecioProducto.append({
         "nombre": val.get("nombre"),
         "precio_venta": val.get("precio_venta"),
@@ -14,32 +21,11 @@ def getAllProcuctoPrecio():
     return PrecioProducto
 
 
-# def getAllStockPriceGama(gama, producto):
-#     condiciones= []
-#     for val in pro.producto:
-#         if(val.get("gama")==gama and val.get("cantidad_en_stock")>= stock ):
-#             condiciones.append(val)
-
-#     def price(val):
-#         return val.get("precio_venta")
-#     condiciones.sort(key=price)
-#     for i, val in enumerate(condiciones):
-#         if(condiciones[i].get("descripcion")):
-#             condiciones[0] = {
-                
-#                 "nombre": val.get("nombre"),
-#                 "precio_venta": val.get("precio_venta"),
-#                 "precio_proveedor": val.get("precio_proveedor"),
-#                 "descripcion": val.get("descripcion")
-
-    #         }
-    # return condiciones
-
  #Devuelva un listado con todos los productos que pertenecen a la gama ornamentales y que tienen mas de 100 unidades en stock. El listado deberá estar ordenado por su precio de venta, mostrando en primer lugar los de mayor precio           
 
 def getAllOrnamentalesPrecio():
     ProductoOrnamentales = []
-    for val in pro.producto:
+    for val in getAllData():
         if val.get("gama")=="Ornamentales" and val.get("cantidad_en_stock") > 100 and val.get("cantidad_en_stock") is not None:
             ProductoOrnamentales.append({
         "nombre": val.get("nombre"),
@@ -54,7 +40,7 @@ def getAllOrnamentalesPrecio():
 
 def getAllProductosGamaPrecio(gama, stock):
     ProductoGamaPrecio = []
-    for val in pro.producto:
+    for val in getAllData():
         if val.get("gama")==gama and val.get("cantidad_en_stock") >= stock:
             ProductoGamaPrecio.append({
         "nombre": val.get("nombre"),
@@ -65,6 +51,9 @@ def getAllProductosGamaPrecio(gama, stock):
 
     ProductoGamaPrecio.sort(key=lambda x: x["precio_venta"], reverse= True,)        
     return ProductoGamaPrecio
+
+
+
 def menu():
     while True:
         print("""
@@ -99,3 +88,4 @@ def menu():
             
         elif(opcion==0):
             break
+    
