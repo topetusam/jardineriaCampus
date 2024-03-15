@@ -1,11 +1,17 @@
-import storage.pedido as pe
 from datetime import datetime
 from tabulate import tabulate
+import requests
 
+
+def getAllPedido():
+    #json-server storage/pedido.json -b 4507 
+    peticionPE= requests.get("http://172.16.106.89:4507")
+    dataPE= peticionPE.json()
+    return dataPE
 
 def getAllEstadosDePedido():
     EstadoPedido = []
-    for val in pe.pedido:
+    for val in getAllPedido():
         EstadoPedido.append({
             "codigo_pedido": val.get("codigo_pedido"),
             "estado_pedido":val.get("estado"),
@@ -19,7 +25,7 @@ def getAllEstadosDePedido():
 
 def getAllCodigoEsperadaEntregaPedido():
     codigoEstadoPedido = []
-    for val in pe.pedido:
+    for val in getAllPedido():
         if val.get("estado")=="Entregado" and val.get("fecha_entrega") is None:
             val["fecha_entrega"] = val.get("fecha_esperada")
         if val.get("estado") == "Entregado":
@@ -45,7 +51,7 @@ def getAllCodigoEsperadaEntregaPedido():
 
 def getAllEstadosDePedido2009():
     Pedidosrechazados2009 = []
-    for val in pe.pedido:
+    for val in getAllPedido():
         if val.get("fecha_pedido").startswith("2009") and val.get("estado")=="Rechazado":
 
             Pedidosrechazados2009.append({
@@ -62,7 +68,7 @@ def getAllEstadosDePedido2009():
 #devuelve un listado con el codigo de pedido, codigo cliente, fecha esperada, y fecha de entrega de los pedidos cuya feha de entrega ha sido al menos dos dias antes de la fecha esperada
 def getAllpedidosDosDiasFechaEsperada():
     pedidosDosDiasFecha= []
-    for val in pe.pedido:
+    for val in getAllPedido():
         if val.get("estado") == "Entregado" and val.get("fecha_entrega") is None:
             val["fecha_entrega"] = val.get("fecha_esperada")
         if val.get("estado") == "Entregado":
@@ -86,7 +92,7 @@ def getAllpedidosDosDiasFechaEsperada():
 
 def PedidosEntregadosEnero():
     PedidosEnero= []
-    for val in pe.pedido:
+    for val in getAllPedido():
         if val.get("estado")=="Entregado" and val.get("fecha_entrega") is not None:
             fecha_entrega = datetime.strptime(val.get("fecha_entrega"), "%Y-%m-%d")
             if fecha_entrega.month == 1:

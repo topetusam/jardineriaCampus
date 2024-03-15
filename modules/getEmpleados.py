@@ -1,11 +1,16 @@
-import storage.empleado as em
 from tabulate import tabulate
+import requests
 
+def getAllEmpleado():
+    #json-server storage/empleado.json -b 4504 
+    peticionEM= requests.get("http://172.16.106.89:4504")
+    dataEM= peticionEM.json()
+    return dataEM
 
 #listado con conbre apeelido y email cuyo codigo de jefe es siete
 def getAllNombreApellidoEmailJefe():
     nombreApellidoEmail = []
-    for val in em.empleados:
+    for val in getAllEmpleado():
         if(val.get("codigo_jefe")==7):
                 nombreApellidoEmail.append(
                 {
@@ -21,7 +26,7 @@ def getAllNombreApellidoEmailJefe():
 def getAllPuestoNombreApellidoEmail():
 
     nombrePuestoApellidoEmail = []
-    for val in em.empleados:
+    for val in getAllEmpleado():
          if(val.get("puesto"))!= "Representante Ventas":
               nombrePuestoApellidoEmail.append({
                    
@@ -35,7 +40,7 @@ def getAllPuestoNombreApellidoEmail():
 #devuelve el nombre, apellidos puesto email, del jefe de la empresa
 def getAllNombreApellidoEmailJefempresa():
     nombreApellidoEmailJefeEmpresa = []
-    for val in em.empleados:
+    for val in getAllEmpleado():
         if (val.get("codigo_jefe")) == 3 and (val.get("puesto") == "Director Oficina"):
             nombreApellidoEmailJefeEmpresa.append(
                     {

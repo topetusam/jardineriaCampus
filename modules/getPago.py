@@ -1,10 +1,15 @@
-import storage.pago as pa
 from tabulate import tabulate
+import requests
 
+def getAllPago():
+    #json-server storage/pago.json -b 4505 
+    peticionPA= requests.get("http://172.16.106.89:4505")
+    dataPA= peticionPA.json()
+    return dataPA
 #Devuelve los pagos realizados por paypal
 def getAllFormapagoTotal():
     FormapagoTotal = []
-    for val in pa.pago:
+    for val in getAllPago():
         if val.get("forma_pago") == "PayPal":
             FormapagoTotal.append({
                 "Forma_pago": val.get("forma_pago"),
@@ -18,7 +23,7 @@ def getAllFechaPago():
     añoPago= "2008"
     FechaPago = []
     repetidos = {}
-    for val in pa.pago:
+    for val in getAllPago():
             if val.get("fecha_pago").startswith(añoPago) and val.get("codigo_cliente") not in repetidos:
                  repetidos[val.get("codigo_cliente")]=True
                  FechaPago.append({
@@ -35,7 +40,7 @@ def getAllFechaPago():
 def getAllFechaPagoPyapal():
     añoPago= "2008"
     FechaPagoPaypal = []
-    for val in pa.pago:
+    for val in getAllPago():
             if val.get("fecha_pago").startswith(añoPago) and val.get("forma_pago")=="PayPal":
                  FechaPagoPaypal.append({
                 
@@ -53,7 +58,7 @@ def getAllFechaPagoPyapal():
 def getAllFormasdepagoSinRepetir():
     FormasDePago = []
     quitarrepetidas = {}
-    for val in pa.pago:
+    for val in getAllPago():
             if val.get("forma_pago") not in quitarrepetidas:
                 quitarrepetidas[val.get("forma_pago")]=True    
                 FormasDePago.append({
