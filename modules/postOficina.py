@@ -17,7 +17,7 @@ def postOficina():
         "linea_direccion2": input("Ingrese la direccion2: ")
     }
 
-    peticion= requests.post("http://172.16.106.89:4506", data=json.dumps(oficina))
+    peticion= requests.post("http://172.16.106.105:4506", data=json.dumps(oficina))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]

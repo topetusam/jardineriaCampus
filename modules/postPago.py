@@ -14,7 +14,7 @@ def postPago():
         "total": int(input("Ingrese el total: "))
     }
 
-    peticion= requests.post("http://172.16.106.89:4505", data=json.dumps(pago))
+    peticion= requests.post("http://172.16.106.105:4505", data=json.dumps(pago))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]

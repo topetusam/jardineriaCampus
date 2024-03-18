@@ -14,7 +14,7 @@ def postGama():
         "imagen": input("Ingrese la url de la Imagen: ")
     }
 
-    peticion= requests.post("http://172.16.106.89:4502", data=json.dumps(gama))
+    peticion= requests.post("http://172.16.106.105:4502", data=json.dumps(gama))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]

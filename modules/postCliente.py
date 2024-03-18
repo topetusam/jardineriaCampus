@@ -6,7 +6,7 @@ import modules.getGama as gG
 
 
 def postCliente():
-    pedido={ 
+    cliente={ 
      "codigo_cliente": int(input("Ingrese el codigo del cliente: ")),
         "nombre_cliente": input("Ingrese el nombre del cliente: "),
         "nombre_contacto": input("Ingrese el nombre del contacto: "),
@@ -24,7 +24,7 @@ def postCliente():
 
     }
 
-    peticion= requests.post("http://172.16.106.89:4503", data=json.dumps(pedido))
+    peticion= requests.post("http://172.16.106.105:4503", data=json.dumps(cliente))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]

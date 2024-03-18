@@ -16,7 +16,7 @@ def postPedido():
         "codigo_cliente": int(input("Ingrese el codigo del cliente: "))
     }
 
-    peticion= requests.post("http://172.16.106.89:4507", data=json.dumps(pedido))
+    peticion= requests.post("http://172.16.106.105:4507", data=json.dumps(pedido))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]

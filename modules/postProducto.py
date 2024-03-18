@@ -18,7 +18,7 @@ def postProducto():
         "precio_proveedor": int(input("Ingrese el precio del proveedor:"))
     }
 
-    peticion= requests.post("http://172.16.106.89:4501", data=json.dumps(producto))
+    peticion= requests.post("http://172.16.106.105:4501", data=json.dumps(producto))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]

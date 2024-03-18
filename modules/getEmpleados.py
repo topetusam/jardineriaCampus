@@ -3,7 +3,7 @@ import requests
 
 def getAllEmpleado():
     #json-server storage/empleado.json -b 4504 
-    peticionEM= requests.get("http://172.16.106.89:4504")
+    peticionEM= requests.get("http://172.16.106.105:4504")
     dataEM= peticionEM.json()
     return dataEM
 

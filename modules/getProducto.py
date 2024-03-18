@@ -5,7 +5,7 @@ import os
 
 def getAllData():
     #json-server storage/producto.json -b 4501 
-    peticion= requests.get("http://172.16.106.89:4501")
+    peticion= requests.get("http://172.16.106.105:4501")
     data= peticion.json()
     return data
 #muestra una lista con los productos disponibles y su precio

@@ -59,8 +59,8 @@ def menuPedido():
               
                         
         
-            1. Reportes de los productos
-            2. Guardar, Actualizar y Eliminar productos
+            1. Reportes de los Pedidos
+            2. Guardar, Actualizar y Eliminar Pedidos
             0. Regresar al menu principal
           
             """)
@@ -78,8 +78,8 @@ def menuPago():
         print("""
 
               
-            1. Reportes de los productos
-            2. Guardar, Actualizar y Eliminar productos
+            1. Reportes de los Pagos
+            2. Guardar, Actualizar y Eliminar Pagos
             0. Regresar al menu principal
           
             """)
@@ -97,8 +97,8 @@ def menuOficina():
               
                             
         
-            1. Reportes de los productos
-            2. Guardar, Actualizar y Eliminar productos
+            1. Reportes de las Oficinas
+            2. Guardar, Actualizar y Eliminar informacion de las Oficinas
             0. Regresar al menu principal
           
             """)
@@ -117,8 +117,8 @@ def menuGama():
         print("""
               
 
-            1. Reportes de los productos
-            2. Guardar, Actualizar y Eliminar productos
+            1. Reportes de las Gamas
+            2. Guardar, Actualizar y Eliminar gamas
             0. Regresar al menu principal
           
             """)
@@ -137,8 +137,8 @@ def menuEmpleado():
               
                       
         
-            1. Reportes de los productos
-            2. Guardar, Actualizar y Eliminar productos
+            1. Reportes de los Empleados
+            2. Guardar, Actualizar y Eliminar Empleados
             0. Regresar al menu principal
           
             """)
@@ -156,8 +156,8 @@ def menuCliente():
               
                          
         
-            1. Reportes de los productos
-            2. Guardar, Actualizar y Eliminar productos
+            1. Reportes de los Clientes
+            2. Guardar, Actualizar y Eliminar Clientes
             0. Regresar al menu principal
           
             """)

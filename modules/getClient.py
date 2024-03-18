@@ -4,7 +4,7 @@ import requests
 
 def getAllDataCliente():
     #json-server storage/cliente.json -b 4503 
-    peticionCl= requests.get("http://172.16.106.89:4503")
+    peticionCl= requests.get("http://172.16.106.105:4503")
     dataCL= peticionCl.json()
     return dataCL
 
