@@ -194,15 +194,15 @@ if (__name__=='__main__'):
             opcion = int(input("\n Seleccione unas de las opciones: "))
             
             if(opcion==1):
-                cliente.menu()
+                menuCliente()
             elif(opcion==2):
-                oficina.menu()
+                menuOficina()
             elif(opcion==3):
-                empleado.menu()
+                menuEmpleado()
             elif(opcion==4):
-                pago.menu()
+                menuPago()
             elif(opcion==5):
-                pedido.menu()
+                menuPedido()
             elif(opcion==6):
                 menuProducto()  
             elif(opcion==0):
