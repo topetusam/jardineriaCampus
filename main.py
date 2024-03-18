@@ -1,12 +1,20 @@
 from tabulate import tabulate
 
-import modules.getClient as cliente
-import modules.getOficina as oficina
-import modules.getEmpleados as empleado
-import modules.getPago as pago
-import modules.getPedidos as pedido
+import modules.getClient as ccliente
+import modules.getOficina as ooficina
+import modules.getEmpleados as eempleado
+import modules.getPago as ppago
+import modules.getGama as ggama      
+import modules.getPedidos as ppedido
 import modules.getProducto as rrproducto
 import modules.postProducto as PProducto
+import modules.postPedido as PPEdido
+import modules.postPago as PPago
+import modules.postOficina as POficina
+import modules.postGama as PGama
+import modules.postCliente as CCliente
+import modules.postEmpleado as EEmpleado
+
 import os 
 
 
@@ -43,6 +51,124 @@ def menuProducto():
             PProducto.menu()
         elif(opcion == 0):
             break
+
+def menuPedido():
+    while True:
+        os.system("clear")
+        print("""
+              
+                        
+        
+            1. Reportes de los productos
+            2. Guardar, Actualizar y Eliminar productos
+            0. Regresar al menu principal
+          
+            """)
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            ppedido.menu()
+        if(opcion == 2):
+            PPEdido.menu()
+        elif(opcion == 0):
+            break
+
+def menuPago():
+    while True:
+        os.system("clear")
+        print("""
+
+              
+            1. Reportes de los productos
+            2. Guardar, Actualizar y Eliminar productos
+            0. Regresar al menu principal
+          
+            """)
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            ppago.menu()
+        if(opcion == 2):
+            PPago.menu()
+        elif(opcion == 0):
+            break
+def menuOficina():
+    while True:
+        os.system("clear")
+        print("""
+              
+                            
+        
+            1. Reportes de los productos
+            2. Guardar, Actualizar y Eliminar productos
+            0. Regresar al menu principal
+          
+            """)
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            ooficina.menu()
+        if(opcion == 2):
+            POficina.menu()
+        elif(opcion == 0):
+            break
+
+
+def menuGama():
+    while True:
+        os.system("clear")
+        print("""
+              
+
+            1. Reportes de los productos
+            2. Guardar, Actualizar y Eliminar productos
+            0. Regresar al menu principal
+          
+            """)
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            ggama.menu()
+        if(opcion == 2):
+            PGama.menu()
+        elif(opcion == 0):
+            break       
+
+def menuEmpleado():
+    while True:
+        os.system("clear")
+        print("""
+              
+                      
+        
+            1. Reportes de los productos
+            2. Guardar, Actualizar y Eliminar productos
+            0. Regresar al menu principal
+          
+            """)
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            eempleado.menu()
+        if(opcion == 2):
+            EEmpleado.menu()
+        elif(opcion == 0):
+            break 
+def menuCliente():
+    while True:
+        os.system("clear")
+        print("""
+              
+                         
+        
+            1. Reportes de los productos
+            2. Guardar, Actualizar y Eliminar productos
+            0. Regresar al menu principal
+          
+            """)
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            ccliente.menu()
+        if(opcion == 2):
+            CCliente.menu()
+        elif(opcion == 0):
+            break
+
 
 if (__name__=='__main__'):
     while True:
