@@ -22,6 +22,39 @@ def postEmpleado():
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]
+
+def updateEmpleado(id):
+    empleado = {
+        "codigo_empleado": int(input("Ingrese el nuevo codigo del empleado: ")),
+        "nombre": input("Ingrese el nuevo nombre: "),
+        "apellido1": input("Ingrese el nuevo apellido1: "),
+        "apellido2": input("Ingrese el nuevo apellido2: "),
+        "extension": input("Ingrese la nueva extension: "),
+        "email": input("Ingrese el nuevo email: "),
+        "codigo_oficina": input("Ingrese el nuevo codigo de la oficina: "),
+        "codigo_jefe": int(input("Ingrese el nuevo codigo del jefe: ")),
+        "puesto": input("Ingrese el nuevo puesto del empleado: ")
+    }
+
+    empleado_existente = gE.getEmpleadoCodigo(id)
+    if not empleado_existente:
+        return {"mensaje": "Producto no encontrado"}
+
+    empleado_actualizado = {**empleado_existente[0], **empleado}
+
+
+    peticion = requests.put(f"http://172.16.106.53:4504/empleado/{id}", data=json.dumps(empleado_actualizado))
+    res = peticion.json()
+
+    if peticion.status_code == 200:
+        res["mensaje"] = "Producto actualizado correctamente"
+    else:
+        res["mensaje"] = "Error al actualizar el producto"
+    
+    return [res]
+
+
+
 def deleteEmpleado(id):
     data = gE.getEmpleadoCodigo(id)
     if(len(data)):
@@ -69,6 +102,24 @@ def menu1():
             idEmpleado = input("Ingrese el id del Empleado que desea eliminar: ")
             print(tabulate(deleteEmpleado(idEmpleado)["body"], headers="keys", tablefmt="github"))
 
+            input("Precione una tecla para continuar.....")
+        elif(opcion == 0):
+            break
+
+def menu2():
+    
+    while True:
+        print("""  
+                                              
+                                                                                                                                                    
+            1. Actualizar un Empleado
+            0. Atras
+          
+          """)        
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            id = input("Ingrese el id del Empleado que desea actualizar: ")
+            print(tabulate(updateEmpleado(id), headers="keys", tablefmt="github"))
             input("Precione una tecla para continuar.....")
         elif(opcion == 0):
             break

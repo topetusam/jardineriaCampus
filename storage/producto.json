@@ -3110,16 +3110,28 @@
             "id": 277
         },
         {
-            "codigo producto": "asd",
-            "nombre producto": "asd",
-            "gama_producto": "Ornamentales",
-            "descripcion producto": "asd",
-            "Dimensiones": "asd",
-            "Proveedor": "asd",
+            "codigo producto": "12",
+            "nombre producto": "guille",
+            "gama_producto": "guille",
+            "descripcion producto": "guille",
+            "Dimensiones": "2020",
+            "Proveedor": "2020",
             "cantidad_en_stock": 123,
-            "precio_venta": 1233,
-            "precio_proveedor": 222,
+            "precio_venta": 321,
+            "precio_proveedor": 321,
             "id": 278
+        },
+        {
+            "codigo producto": "278",
+            "nombre producto": "santaigo",
+            "gama_producto": "Frutales",
+            "descripcion producto": "asdasd",
+            "Dimensiones": "20x20",
+            "Proveedor": "frutalessa",
+            "cantidad_en_stock": 456,
+            "precio_venta": 432,
+            "precio_proveedor": 345,
+            "id": "<built-in function id>"
         }
     ]
 }

@@ -43,6 +43,38 @@ def deleteProducto(id):
         }
 
 
+def updateProducto(id):
+    producto = {
+        "codigo producto": input("Ingrese el nuevo código del producto: "),
+        "nombre producto": input("Ingrese el nuevo nombre del producto: "),
+        "gama_producto": input("Ingrese la nueva gama del producto: "),
+        "descripcion producto": input("Ingrese la nueva descripción del producto: "),
+        "Dimensiones": input("Ingrese la nueva dimensión: "),
+        "Proveedor": input("Ingrese el nuevo proveedor: "),
+        "cantidad_en_stock": int(input("Ingrese el nuevo stock del producto: ")),
+        "precio_venta": int(input("Ingrese el nuevo precio de venta: ")),
+        "precio_proveedor": int(input("Ingrese el nuevo precio del proveedor: "))
+    }
+
+    producto_existente = gP.getProductCodigo(id)
+    if not producto_existente:
+        return {"mensaje": "Producto no encontrado"}
+
+    producto_actualizado = {**producto_existente[0], **producto}
+
+
+    peticion = requests.put(f"http://172.16.106.53:4501/producto/{id}", data=json.dumps(producto_actualizado))
+    res = peticion.json()
+
+    if peticion.status_code == 200:
+        res["mensaje"] = "Producto actualizado correctamente"
+    else:
+        res["mensaje"] = "Error al actualizar el producto"
+    
+    return [res]
+
+
+
 def menu():
     while True:
         print("""  
@@ -116,7 +148,8 @@ def menu2():
           """)        
         opcion = int(input("\nSelecione una de las opciones: "))
         if(opcion == 1):
-            print(tabulate(deleteProducto(id), headers="keys", tablefmt="github"))
+            id = input("Ingrese el id del producto que desea actualizar: ")
+            print(tabulate(updateProducto(id), headers="keys", tablefmt="github"))
             input("Precione una tecla para continuar.....")
         elif(opcion == 0):
             break

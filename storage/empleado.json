@@ -373,15 +373,15 @@
             "id": 31
         },
         {
-            "codigo_empleado": 2,
-            "nombre": "rubencito",
-            "apellido1": "perez",
-            "apellido2": "martineaz",
-            "extension": "ief",
-            "email": "akhlfvukdv",
-            "codigo_oficina": "uwviuec",
-            "codigo_jefe": 2,
-            "puesto": "subdirector",
+            "codigo_empleado": 12,
+            "nombre": "carlos",
+            "apellido1": "fasdab",
+            "apellido2": "ahsbdaskd",
+            "extension": "1244",
+            "email": "dkfhvjha",
+            "codigo_oficina": "12",
+            "codigo_jefe": 123,
+            "puesto": "director",
             "id": 32
         }
     ]
