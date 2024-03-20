@@ -8,6 +8,12 @@ def getAllData():
     peticion= requests.get("http://172.16.106.105:4501")
     data= peticion.json()
     return data
+
+def getProductCodigo(codigo):
+    peticion= requests.get(f"http://172.16.106.98:4501/producto/{codigo}")
+    return[peticion.json()] if peticion.ok else []
+
+
 #muestra una lista con los productos disponibles y su precio
 
 def getAllProcuctoPrecio():

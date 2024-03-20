@@ -1,4 +1,5 @@
 from tabulate import tabulate
+import json
 
 import modules.getClient as ccliente
 import modules.getOficina as ooficina
@@ -21,7 +22,7 @@ import os
 
 
 
-#print(tabulate(empleado.getAllNombreApellidoEmailJefe(3), tablefmt = 'grid'))
+# print(tabulate(empleado.getAllNombreApellidoEmailJefe(3), tablefmt = 'grid'))
 # print(tabulate(cliente.clientesCiudadMadrid(), tablefmt='grid'))
 def menuProducto():
     while True:
@@ -40,7 +41,9 @@ def menuProducto():
             /_/                                                                                  
         
             1. Reportes de los productos
-            2. Guardar, Actualizar y Eliminar productos
+            2. Guardar
+            3. Eliminar
+            4. Actualizar
             0. Regresar al menu principal
           
             """)
@@ -49,6 +52,10 @@ def menuProducto():
             rrproducto.menu()
         if(opcion == 2):
             PProducto.menu()
+        if(opcion == 3):
+            PProducto.menu1()
+        if(opcion == 4):
+            PProducto.menu2()
         elif(opcion == 0):
             break
 
@@ -59,8 +66,10 @@ def menuPedido():
               
                         
         
-            1. Reportes de los Pedidos
-            2. Guardar, Actualizar y Eliminar Pedidos
+            1. Reportes de los pedidos
+            2. Guardar
+            3. Eliminar
+            4. Actualizar
             0. Regresar al menu principal
           
             """)
@@ -69,6 +78,10 @@ def menuPedido():
             ppedido.menu()
         if(opcion == 2):
             PPEdido.menu()
+        if(opcion == 3):
+            PPEdido.menu1()
+        if(opcion == 4):
+            PPEdido.menu2()        
         elif(opcion == 0):
             break
 
@@ -78,8 +91,10 @@ def menuPago():
         print("""
 
               
-            1. Reportes de los Pagos
-            2. Guardar, Actualizar y Eliminar Pagos
+            1. Reportes de los productos
+            2. Guardar
+            3. Eliminar
+            4. Actualizar
             0. Regresar al menu principal
           
             """)
@@ -88,6 +103,10 @@ def menuPago():
             ppago.menu()
         if(opcion == 2):
             PPago.menu()
+        if(opcion == 3):
+            PPago.menu1()
+        if(opcion == 4):
+            PPago.menu2()        
         elif(opcion == 0):
             break
 def menuOficina():
@@ -97,8 +116,10 @@ def menuOficina():
               
                             
         
-            1. Reportes de las Oficinas
-            2. Guardar, Actualizar y Eliminar informacion de las Oficinas
+            1. Reportes de las oficinas
+            2. Guardar
+            3. Eliminar
+            4. Actualizar
             0. Regresar al menu principal
           
             """)
@@ -107,6 +128,10 @@ def menuOficina():
             ooficina.menu()
         if(opcion == 2):
             POficina.menu()
+        if(opcion == 3):
+            POficina.menu1()
+        if(opcion == 4):
+            POficina.menu2()        
         elif(opcion == 0):
             break
 
@@ -117,8 +142,10 @@ def menuGama():
         print("""
               
 
-            1. Reportes de las Gamas
-            2. Guardar, Actualizar y Eliminar gamas
+            1. Reportes de la gama
+            2. Guardar
+            3. Eliminar
+            4. Actualizar
             0. Regresar al menu principal
           
             """)
@@ -127,6 +154,10 @@ def menuGama():
             ggama.menu()
         if(opcion == 2):
             PGama.menu()
+        if(opcion == 3):
+            PGama.menu1()
+        if(opcion == 3):
+            PGama.menu2()        
         elif(opcion == 0):
             break       
 
@@ -138,7 +169,9 @@ def menuEmpleado():
                       
         
             1. Reportes de los Empleados
-            2. Guardar, Actualizar y Eliminar Empleados
+            2. Guardar
+            3. Eliminar
+            4. Actualizar
             0. Regresar al menu principal
           
             """)
@@ -147,6 +180,10 @@ def menuEmpleado():
             eempleado.menu()
         if(opcion == 2):
             EEmpleado.menu()
+        if(opcion == 3):
+            EEmpleado.menu1()
+        if(opcion == 4):
+            EEmpleado.menu2()        
         elif(opcion == 0):
             break 
 def menuCliente():
@@ -156,8 +193,11 @@ def menuCliente():
               
                          
         
+            
             1. Reportes de los Clientes
-            2. Guardar, Actualizar y Eliminar Clientes
+            2. Guardar
+            3. Eliminar
+            4. Actualizar
             0. Regresar al menu principal
           
             """)
@@ -166,6 +206,10 @@ def menuCliente():
             ccliente.menu()
         if(opcion == 2):
             CCliente.menu()
+        if(opcion == 3):
+            CCliente.menu1()
+        if(opcion == 4):
+            CCliente.menu2()
         elif(opcion == 0):
             break
 
@@ -235,4 +279,18 @@ if (__name__=='__main__'):
             #     menuProducto()  
             # elif(opcion==0):
             #     break           
-    
+
+
+# -----codigo para agragar ids----
+             
+            
+
+# with open("storage/pedido.json", "r") as f:
+#     fichero = f.read()
+#     data = json.loads(fichero)
+#     for i, val in enumerate(data):
+#         data[i]["id"] = (i+1)
+#     data = json.dumps(data, indent=4).encode("utf-8")
+#     with open("storage/pedido.json", "wb+") as f1:
+#         f1.write(data)
+#         f1.close()    

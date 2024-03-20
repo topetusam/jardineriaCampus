@@ -4,10 +4,13 @@ import requests
 
 def getAllOficina():
     #json-server storage/oficina.json -b 4506 
-    peticionOF= requests.get("http://172.16.106.105:4506")
+    peticionOF= requests.get("http://172.16.106.98:4506")
     dataOF= peticionOF.json()
     return dataOF
 
+def getOficinaCodigo(codigo):
+    peticion= requests.get(f"http://172.16.106.98:4506/oficina/{codigo}")
+    return[peticion.json()] if peticion.ok else []
 
 #devuelve los nombres de la ciudad con su codigo
 def getAllCodigoCiudad():

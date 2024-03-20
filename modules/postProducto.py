@@ -2,7 +2,7 @@ import os
 from tabulate import tabulate
 import json
 import requests
-import modules.getGama as gG
+import modules.getProducto as gP
 
 
 def postProducto():
@@ -18,10 +18,30 @@ def postProducto():
         "precio_proveedor": int(input("Ingrese el precio del proveedor:"))
     }
 
-    peticion= requests.post("http://172.16.106.105:4501", data=json.dumps(producto))
+    peticion= requests.post("http://172.16.106.98:4501", data=json.dumps(producto))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]
+
+def deleteProducto(id):
+    data = gP.getProductCodigo(id)
+    if(len(data)):
+        peticion = requests.delete(f"http://172.16.106.98:4501/productos/{id}")
+        if(peticion.status_code == 204):
+            data.append({"message": "producto eliminado correctamente"})
+            return {
+                "body": data, 
+                "status": peticion.status_code,
+            }
+    else:
+        return {
+            "body":[{
+                "message":"producto no encontrado",
+                "id": id
+            }],
+            "status": 400,
+        }
+
 
 def menu():
     while True:
@@ -44,6 +64,59 @@ def menu():
         opcion = int(input("\nSelecione una de las opciones: "))
         if(opcion == 1):
             print(tabulate(postProducto(), headers="keys", tablefmt="github"))
+            input("Precione una tecla para continuar.....")
+        elif(opcion == 0):
+            break
+
+def menu1():
+    while True:
+        print("""  
+    ___       __          _       _      __                         __      __                    __        
+   /   | ____/ /___ ___  (_)___  (_)____/ /__________ ______   ____/ /___ _/ /_____  _____   ____/ /__      
+  / /| |/ __  / __ `__ \/ / __ \/ / ___/ __/ ___/ __ `/ ___/  / __  / __ `/ __/ __ \/ ___/  / __  / _ \     
+ / ___ / /_/ / / / / / / / / / / (__  ) /_/ /  / /_/ / /     / /_/ / /_/ / /_/ /_/ (__  )  / /_/ /  __/     
+/_/  |_\__,_/_/ /_/ /_/_/_/ /_/_/____/\__/_/   \__,_/_/      \__,_/\__,_/\__/\____/____/   \__,_/\___/      
+    ____  ____  ____  ____  __  __________________  _____                                                   
+   / __ \/ __ \/ __ \/ __ \/ / / / ____/_  __/ __ \/ ___/                                                   
+  / /_/ / /_/ / / / / / / / / / / /     / / / / / /\__ \                                                    
+ / ____/ _, _/ /_/ / /_/ / /_/ / /___  / / / /_/ /___/ /                                                    
+/_/   /_/ |_|\____/_____/\____/\____/ /_/  \____//____/                                                     
+                                                                                                                                                    
+            1. Eliminar un Producto
+            0. Atras
+          
+          """)        
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            idProducto = input("Ingrese el id del producto que desea eliminar: ")
+            print(tabulate(deleteProducto(idProducto)["body"], headers="keys", tablefmt="github"))
+
+            input("Precione una tecla para continuar.....")
+        elif(opcion == 0):
+            break
+
+
+def menu2():
+    while True:
+        print("""  
+    ___       __          _       _      __                         __      __                    __        
+   /   | ____/ /___ ___  (_)___  (_)____/ /__________ ______   ____/ /___ _/ /_____  _____   ____/ /__      
+  / /| |/ __  / __ `__ \/ / __ \/ / ___/ __/ ___/ __ `/ ___/  / __  / __ `/ __/ __ \/ ___/  / __  / _ \     
+ / ___ / /_/ / / / / / / / / / / (__  ) /_/ /  / /_/ / /     / /_/ / /_/ / /_/ /_/ (__  )  / /_/ /  __/     
+/_/  |_\__,_/_/ /_/ /_/_/_/ /_/_/____/\__/_/   \__,_/_/      \__,_/\__,_/\__/\____/____/   \__,_/\___/      
+    ____  ____  ____  ____  __  __________________  _____                                                   
+   / __ \/ __ \/ __ \/ __ \/ / / / ____/_  __/ __ \/ ___/                                                   
+  / /_/ / /_/ / / / / / / / / / / /     / / / / / /\__ \                                                    
+ / ____/ _, _/ /_/ / /_/ / /_/ / /___  / / / /_/ /___/ /                                                    
+/_/   /_/ |_|\____/_____/\____/\____/ /_/  \____//____/                                                     
+                                                                                                                                                    
+            1. Actualizar un Producto
+            0. Atras
+          
+          """)        
+        opcion = int(input("\nSelecione una de las opciones: "))
+        if(opcion == 1):
+            print(tabulate(deleteProducto(id), headers="keys", tablefmt="github"))
             input("Precione una tecla para continuar.....")
         elif(opcion == 0):
             break

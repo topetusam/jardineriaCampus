@@ -5,10 +5,12 @@ import requests
 
 def getAllPedido():
     #json-server storage/pedido.json -b 4507 
-    peticionPE= requests.get("http://172.16.106.105:4507")
+    peticionPE= requests.get("http://172.16.106.98:4507")
     dataPE= peticionPE.json()
     return dataPE
-
+def getPedidoCodigo(codigo):
+    peticion= requests.get(f"http://172.16.106.98:4507/pedido/{codigo}")
+    return[peticion.json()] if peticion.ok else []
 def getAllEstadosDePedido():
     EstadoPedido = []
     for val in getAllPedido():
