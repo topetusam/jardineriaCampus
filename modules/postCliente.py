@@ -24,14 +24,14 @@ def postCliente():
 
     }
 
-    peticion= requests.post("http://172.16.106.98:4503", data=json.dumps(cliente))
+    peticion= requests.post("http://172.16.106.53:4503/cliente", data=json.dumps(cliente))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]
 def deleteCliente(id):
     data = gC.getClienteCodigo(id)
     if(len(data)):
-        peticion = requests.delete(f"http://172.16.106.98:4501/cliente/{id}")
+        peticion = requests.delete(f"http://172.16.106.53:4501/cliente/{id}")
         if(peticion.status_code == 204):
             data.append({"message": "producto eliminado correctamente"})
             return {

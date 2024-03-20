@@ -14,14 +14,14 @@ def postGama():
         "imagen": input("Ingrese la url de la Imagen: ")
     }
 
-    peticion= requests.post("http://172.16.106.98:4502", data=json.dumps(gama))
+    peticion= requests.post("http://172.16.106.53:4502/gama", data=json.dumps(gama))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]
 def deleteGama(id):
     data = gGa.getGamaCodigo(id)
     if(len(data)):
-        peticion = requests.delete(f"http://172.16.106.98:4501/gama/{id}")
+        peticion = requests.delete(f"http://172.16.106.53:4501/gama/{id}")
         if(peticion.status_code == 204):
             data.append({"message": "producto eliminado correctamente"})
             return {

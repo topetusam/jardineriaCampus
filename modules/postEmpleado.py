@@ -18,14 +18,14 @@ def postEmpleado():
         "puesto": input("Ingrese el puesto del empleado: ")
     }
 
-    peticion= requests.post("http://172.16.106.98:4504", data=json.dumps(empleado))
+    peticion= requests.post("http://172.16.106.53:4504/empleado", data=json.dumps(empleado))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]
 def deleteEmpleado(id):
     data = gE.getEmpleadoCodigo(id)
     if(len(data)):
-        peticion = requests.delete(f"http://172.16.106.98:4501/empleado/{id}")
+        peticion = requests.delete(f"http://172.16.106.53:4501/empleado/{id}")
         if(peticion.status_code == 204):
             data.append({"message": "producto eliminado correctamente"})
             return {

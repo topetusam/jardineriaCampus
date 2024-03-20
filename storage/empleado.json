@@ -371,6 +371,18 @@
             "codigo_jefe": 29,
             "puesto": "Representante Ventas",
             "id": 31
+        },
+        {
+            "codigo_empleado": 2,
+            "nombre": "rubencito",
+            "apellido1": "perez",
+            "apellido2": "martineaz",
+            "extension": "ief",
+            "email": "akhlfvukdv",
+            "codigo_oficina": "uwviuec",
+            "codigo_jefe": 2,
+            "puesto": "subdirector",
+            "id": 32
         }
     ]
 }

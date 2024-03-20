@@ -14,7 +14,7 @@ def postPago():
         "total": int(input("Ingrese el total: "))
     }
 
-    peticion= requests.post("http://172.16.106.98:4505", data=json.dumps(pago))
+    peticion= requests.post("http://172.16.106.53:4505/pago", data=json.dumps(pago))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]
@@ -22,7 +22,7 @@ def deletePago(id):
     
     data = gPa.getPagoCodigo(id)
     if(len(data)):
-        peticion = requests.delete(f"http://172.16.106.98:4501/pago/{id}")
+        peticion = requests.delete(f"http://172.16.106.53:4501/pago/{id}")
         if(peticion.status_code == 204):
             data.append({"message": "producto eliminado correctamente"})
             return {

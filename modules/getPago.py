@@ -3,12 +3,12 @@ import requests
 
 def getAllPago():
     #json-server storage/pago.json -b 4505 
-    peticionPA= requests.get("http://172.16.106.98:4505")
+    peticionPA= requests.get("http://172.16.106.53:4505/pago")
     dataPA= peticionPA.json()
     return dataPA
 
 def getPagoCodigo(codigo):
-    peticion= requests.get(f"http://172.16.106.98:4505/pago/{codigo}")
+    peticion= requests.get(f"http://172.16.106.53:4505/pago/{codigo}")
     return[peticion.json()] if peticion.ok else []
 
 #Devuelve los pagos realizados por paypal

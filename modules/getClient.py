@@ -4,12 +4,12 @@ import requests
 
 def getAllDataCliente():
     #json-server storage/cliente.json -b 4503 
-    peticionCl= requests.get("http://172.16.106.98:4503")
+    peticionCl= requests.get("http://172.16.106.53:4503/cliente")
     dataCL= peticionCl.json()
     return dataCL
 
 def getClienteCodigo(codigo):
-    peticion= requests.get(f"http://172.16.106.98:4503/cliente/{codigo}")
+    peticion= requests.get(f"http://172.16.106.53:4503/cliente/{codigo}")
     return[peticion.json()] if peticion.ok else []
 
 #devuelve un listado con los nombres de los clientes y el codigo 

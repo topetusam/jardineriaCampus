@@ -18,7 +18,7 @@ def postProducto():
         "precio_proveedor": int(input("Ingrese el precio del proveedor:"))
     }
 
-    peticion= requests.post("http://172.16.106.98:4501", data=json.dumps(producto))
+    peticion= requests.post("http://172.16.106.53:4501/producto", data=json.dumps(producto))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]
@@ -26,7 +26,7 @@ def postProducto():
 def deleteProducto(id):
     data = gP.getProductCodigo(id)
     if(len(data)):
-        peticion = requests.delete(f"http://172.16.106.98:4501/productos/{id}")
+        peticion = requests.delete(f"http://172.16.106.53:4501/producto/{id}")
         if(peticion.status_code == 204):
             data.append({"message": "producto eliminado correctamente"})
             return {

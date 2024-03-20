@@ -207,6 +207,14 @@
             "fecha_pago": "2006-05-26",
             "total": 1171,
             "id": 26
+        },
+        {
+            "codigo_cliente": 2,
+            "forma_pago": "Paypal",
+            "id_transaccion": "123456",
+            "fecha_pago": "20/20/2022",
+            "total": 2500,
+            "id": 27
         }
     ]
 }
