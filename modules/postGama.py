@@ -14,7 +14,7 @@ def postGama():
         "imagen": input("Ingrese la url de la Imagen: ")
     }
 
-    peticion= requests.post("http://172.16.106.53:4502/gama", data=json.dumps(gama))
+    peticion= requests.post(" http://154.38.171.54:5004/gama", data=json.dumps(gama))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]
@@ -35,7 +35,7 @@ def updateGama(id):
     gama_actualizado = {**gama_existente[0], **gama}
 
 
-    peticion = requests.put(f"http://172.16.106.53:4502/gama/{id}", data=json.dumps(gama_actualizado))
+    peticion = requests.put(f" http://154.38.171.54:5004/gama/{id}", data=json.dumps(gama_actualizado))
     res = peticion.json()
 
     if peticion.status_code == 200:
@@ -50,7 +50,7 @@ def updateGama(id):
 def deleteGama(id):
     data = gGa.getGamaCodigo(id)
     if(len(data)):
-        peticion = requests.delete(f"http://172.16.106.53:4501/gama/{id}")
+        peticion = requests.delete(f" http://154.38.171.54:5004/gama/{id}")
         if(peticion.status_code == 204):
             data.append({"message": "producto eliminado correctamente"})
             return {

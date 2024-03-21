@@ -3,12 +3,12 @@ import requests
 
 def getAllGama():
     # json-server storage/gama_producto.json -b 4502
-    peticion = requests.get("http://172.16.106.53:4502/gama")
+    peticion = requests.get(" http://154.38.171.54:5004/gama")
     data = peticion.json()
     return data
 
 def getGamaCodigo(codigo):
-    peticion= requests.get(f"http://172.16.106.53:4502/gama/{codigo}")
+    peticion= requests.get(f" http://154.38.171.54:5004/gama/{codigo}")
     return[peticion.json()] if peticion.ok else []
 
 def getAllNombre():

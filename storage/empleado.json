@@ -133,15 +133,15 @@
             "id": 11
         },
         {
-            "codigo_empleado": 12,
-            "nombre": "Jos\u00e9 Manuel",
-            "apellido1": "Martinez",
-            "apellido2": "De la Osa",
-            "extension": "2519",
-            "email": "jmmart@hotmail.es",
-            "codigo_oficina": "BCN-ES",
-            "codigo_jefe": 11,
-            "puesto": "Representante Ventas",
+            "codigo_empleado": 123,
+            "nombre": "ineidys",
+            "apellido1": "ineidys",
+            "apellido2": "ineydis",
+            "extension": "1234",
+            "email": "ineydis@",
+            "codigo_oficina": "12",
+            "codigo_jefe": 3,
+            "puesto": "subdirector",
             "id": 12
         },
         {

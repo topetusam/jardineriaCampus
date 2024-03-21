@@ -3,13 +3,13 @@ import requests
 
 def getAllEmpleado():
     #json-server storage/empleado.json -b 4504 
-    peticionEM= requests.get("http://172.16.106.53:4504/empleado")
+    peticionEM= requests.get(" http://154.38.171.54:5003/empleados")
     dataEM= peticionEM.json()
     return dataEM
 
 
 def getEmpleadoCodigo(codigo):
-    peticion= requests.get(f"http://172.16.106.53:4504/empleado/{codigo}")
+    peticion= requests.get(f" http://154.38.171.54:5003/empleados/{codigo}")
     return[peticion.json()] if peticion.ok else []
 
 #listado con conbre apeelido y email cuyo codigo de jefe es siete

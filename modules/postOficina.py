@@ -17,7 +17,7 @@ def postOficina():
         "linea_direccion2": input("Ingrese la direccion2: ")
     }
 
-    peticion= requests.post("http://172.16.106.53:4506/oficina", data=json.dumps(oficina))
+    peticion= requests.post(" http://154.38.171.54:5005/oficinas ", data=json.dumps(oficina))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]
@@ -41,7 +41,7 @@ def updateOficina(id):
     oficina_actualizado = {**oficina_existente[0], **oficina}
 
 
-    peticion = requests.put(f"http://172.16.106.53:4505/oficina/{id}", data=json.dumps(oficina_actualizado))
+    peticion = requests.put(f" http://154.38.171.54:5005/oficinas /{id}", data=json.dumps(oficina_actualizado))
     res = peticion.json()
 
     if peticion.status_code == 200:
@@ -60,7 +60,7 @@ def updateOficina(id):
 def deleteOficina(id):
     data = gO.getOficinaCodigo(id)
     if(len(data)):
-        peticion = requests.delete(f"http://172.16.106.53:4501/oficina/{id}")
+        peticion = requests.delete(f" http:// http://154.38.171.54:5005/oficinas/{id}")
         if(peticion.status_code == 204):
             data.append({"message": "producto eliminado correctamente"})
             return {
