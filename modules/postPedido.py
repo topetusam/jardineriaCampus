@@ -16,7 +16,7 @@ def postPedido():
         "codigo_cliente": int(input("Ingrese el codigo del cliente: "))
     }
 
-    peticion= requests.post("http://http://154.38.171.54:5007/pedidos", data=json.dumps(pedido))
+    peticion= requests.post("http://154.38.171.54:5007/pedidos", data=json.dumps(pedido))
     res = peticion.json()
     res["mensaje"]="Producto Guardado"
     return [res]
@@ -57,7 +57,7 @@ def updatePedido(id):
 def deletePedido(id):
     data = gPe.getPedidoCodigo(id)
     if(len(data)):
-        peticion = requests.delete(f"http://http://154.38.171.54:5007/pedidos/{id}")
+        peticion = requests.delete(f"http://154.38.171.54:5007/pedidos/{id}")
         if(peticion.status_code == 204):
             data.append({"message": "producto eliminado correctamente"})
             return {
@@ -86,7 +86,7 @@ def deletePedido(id):
         "precio_proveedor": int(input("Ingrese el nuevo precio del proveedor: "))
     }
 
-    peticion = requests.put(f"http://http://154.38.171.54:5007/pedidos/{id}", data=json.dumps(pedido))
+    peticion = requests.put(f"http://154.38.171.54:5007/pedidos/{id}", data=json.dumps(pedido))
     res = peticion.json()
     if peticion.status_code == 200:
         res["mensaje"] = "Pedido actualizado correctamente"
