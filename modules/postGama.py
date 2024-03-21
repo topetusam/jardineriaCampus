@@ -35,7 +35,7 @@ def updateGama(id):
     gama_actualizado = {**gama_existente[0], **gama}
 
 
-    peticion = requests.put(f" http://154.38.171.54:5004/gama/{id}", data=json.dumps(gama_actualizado))
+    peticion = requests.put(f"http://154.38.171.54:5004/gama/{id}", data=json.dumps(gama_actualizado))
     res = peticion.json()
 
     if peticion.status_code == 200:

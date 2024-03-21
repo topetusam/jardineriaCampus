@@ -76,7 +76,7 @@ def postProducto():
             if not validar_numero(producto.get("precio_proveedor")):
                 raise Exception("El precio del proveedor del producto debe ser un número entero")
                 
-            peticion= requests.post(" http:// http://154.38.171.54:5008/productos", data=json.dumps(producto))
+            peticion= requests.post("http://http://154.38.171.54:5008/productos", data=json.dumps(producto))
             res = peticion.json()
             res["mensaje"]="Producto Guardado"
             print(tabulate([res], headers="keys", tablefmt="github"))
@@ -88,7 +88,7 @@ def postProducto():
 def deleteProducto(id):
     data = gP.getProductCodigo(id)
     if(len(data)):
-        peticion = requests.delete(f" http:// http://154.38.171.54:5008/productos/{id}")
+        peticion = requests.delete(f"http://http://154.38.171.54:5008/productos/{id}")
         if(peticion.status_code == 204):
             data.append({"message": "producto eliminado correctamente"})
             return {
@@ -125,7 +125,7 @@ def updateProducto(id):
     producto_actualizado = {**producto_existente[0], **producto}
 
 
-    peticion = requests.put(f" http:// http://154.38.171.54:5008/productos/{id}", data=json.dumps(producto_actualizado))
+    peticion = requests.put(f"http://http://154.38.171.54:5008/productos/{id}", data=json.dumps(producto_actualizado))
     res = peticion.json()
 
     if peticion.status_code == 200:

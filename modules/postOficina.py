@@ -41,7 +41,7 @@ def updateOficina(id):
     oficina_actualizado = {**oficina_existente[0], **oficina}
 
 
-    peticion = requests.put(f" http://154.38.171.54:5005/oficinas /{id}", data=json.dumps(oficina_actualizado))
+    peticion = requests.put(f"http://154.38.171.54:5005/oficinas /{id}", data=json.dumps(oficina_actualizado))
     res = peticion.json()
 
     if peticion.status_code == 200:
@@ -60,7 +60,7 @@ def updateOficina(id):
 def deleteOficina(id):
     data = gO.getOficinaCodigo(id)
     if(len(data)):
-        peticion = requests.delete(f" http:// http://154.38.171.54:5005/oficinas/{id}")
+        peticion = requests.delete(f"http://http://154.38.171.54:5005/oficinas/{id}")
         if(peticion.status_code == 204):
             data.append({"message": "producto eliminado correctamente"})
             return {
