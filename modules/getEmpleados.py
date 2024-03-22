@@ -9,7 +9,7 @@ def getAllEmpleado():
 
 
 def getEmpleadoCodigo(codigo):
-    peticion= requests.get(f" http://154.38.171.54:5003/empleados/{codigo}")
+    peticion= requests.get(f"http://154.38.171.54:5003/empleados/{codigo}")
     return[peticion.json()] if peticion.ok else []
 
 #listado con conbre apeelido y email cuyo codigo de jefe es siete
